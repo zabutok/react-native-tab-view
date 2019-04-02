@@ -2,9 +2,12 @@
   "name": "react-native-tab-view",
   "version": "2.0.3",
   "description": "Tab view component for React Native",
-  "main": "src/index.js",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "react-native": "src/index.js",
   "files": [
-    "src/"
+    "src",
+    "lib"
   ],
   "scripts": {
     "test": "jest",
@@ -12,7 +15,8 @@
     "lint": "eslint .",
     "release": "release-it",
     "example": "yarn --cwd example",
-    "bootstrap": "yarn && yarn example"
+    "bootstrap": "yarn && yarn example",
+    "prepare": "bob build"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -41,6 +45,7 @@
   "devDependencies": {
     "@commitlint/config-conventional": "^7.5.0",
     "@expo/vector-icons": "^9.0.0",
+    "@react-native-community/bob": "^0.3.2",
     "babel-jest": "^24.1.0",
     "babel-preset-react-native": "^4.0.0",
     "commitlint": "^7.5.2",
@@ -76,6 +81,19 @@
     "preset": "react-native",
     "modulePathIgnorePatterns": [
       "<rootDir>/example/node_modules"
+    ]
+  },
+  "@react-native-community/bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "commonjs",
+        {
+          "flow": true
+        }
+      ],
+      "module"
     ]
   }
 }
