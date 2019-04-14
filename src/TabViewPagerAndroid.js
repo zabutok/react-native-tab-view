@@ -91,7 +91,7 @@ export default class TabViewPagerAndroid<T: *> extends React.Component<
   };
 
   _handlePageScrollStateChanged = (e: PageScrollState) => {
-    this._isIdle = e === 'idle';
+    this._isIdle = e.nativeEvent.pageScrollState === 'idle';
 
     let nextIndex = this._currentIndex;
 
